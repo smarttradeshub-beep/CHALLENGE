@@ -303,7 +303,7 @@ export function AnalyticsPage({ challenges }: AnalyticsPageProps) {
           animate={{ opacity: 1, x: 0 }}
           className="relative"
         >
-          <div className="absolute inset-0 bg-white/60 dark:bg-slate-800/60 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50"></div>
+          <div className="absolute inset-0 bg-white/70 dark:bg-gray-900/80 backdrop-blur-2xl rounded-3xl border border-slate-200/50 dark:border-gray-700/50 shadow-xl"></div>
           <div className="relative p-8">
             <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6 flex items-center">
               <div className="w-2 h-2 bg-gradient-to-r from-emerald-500 to-cyan-600 rounded-full mr-3"></div>
@@ -314,24 +314,27 @@ export function AnalyticsPage({ challenges }: AnalyticsPageProps) {
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(148, 163, 184, 0.2)" />
                 <XAxis
                   dataKey="name"
-                  tick={{ fontSize: 12, fill: 'currentColor' }}
-                  className="fill-slate-600 dark:fill-slate-400"
+                  tick={{ fontSize: 13, fontWeight: 500 }}
+                  stroke="rgb(100, 116, 139)"
                   axisLine={false}
                   tickLine={false}
                 />
                 <YAxis
-                  tick={{ fontSize: 12, fill: 'currentColor' }}
-                  className="fill-slate-600 dark:fill-slate-400"
+                  tick={{ fontSize: 13, fontWeight: 500 }}
+                  stroke="rgb(100, 116, 139)"
                   axisLine={false}
                   tickLine={false}
                 />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                    backgroundColor: 'rgba(15, 23, 42, 0.98)',
                     border: 'none',
-                    borderRadius: '12px',
+                    borderRadius: '16px',
                     color: 'white',
+                    fontSize: '14px',
+                    fontWeight: '500',
                     boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                    backdropFilter: 'blur(16px)',
                   }}
                 />
                 <Bar
@@ -356,7 +359,7 @@ export function AnalyticsPage({ challenges }: AnalyticsPageProps) {
           animate={{ opacity: 1, y: 0 }}
           className="relative lg:col-span-2"
         >
-          <div className="absolute inset-0 bg-white/60 dark:bg-slate-800/60 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50"></div>
+          <div className="absolute inset-0 bg-white/70 dark:bg-gray-900/80 backdrop-blur-2xl rounded-3xl border border-slate-200/50 dark:border-gray-700/50 shadow-xl"></div>
           <div className="relative p-8">
             <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6 flex items-center">
               <div className="w-2 h-2 bg-gradient-to-r from-orange-500 to-red-600 rounded-full mr-3"></div>
@@ -367,25 +370,28 @@ export function AnalyticsPage({ challenges }: AnalyticsPageProps) {
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(148, 163, 184, 0.2)" />
                 <XAxis
                   dataKey="date"
-                  tick={{ fontSize: 10, fill: 'currentColor' }}
-                  className="fill-slate-600 dark:fill-slate-400"
+                  tick={{ fontSize: 11, fontWeight: 500 }}
+                  stroke="rgb(100, 116, 139)"
                   axisLine={false}
                   tickLine={false}
                   tickFormatter={(value) => new Date(value).getDate().toString()}
                 />
                 <YAxis
-                  tick={{ fontSize: 12, fill: 'currentColor' }}
-                  className="fill-slate-600 dark:fill-slate-400"
+                  tick={{ fontSize: 13, fontWeight: 500 }}
+                  stroke="rgb(100, 116, 139)"
                   axisLine={false}
                   tickLine={false}
                 />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                    backgroundColor: 'rgba(15, 23, 42, 0.98)',
                     border: 'none',
-                    borderRadius: '12px',
+                    borderRadius: '16px',
                     color: 'white',
+                    fontSize: '14px',
+                    fontWeight: '500',
                     boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                    backdropFilter: 'blur(16px)',
                   }}
                   labelFormatter={(value) => new Date(value).toLocaleDateString()}
                 />
@@ -413,7 +419,7 @@ export function AnalyticsPage({ challenges }: AnalyticsPageProps) {
           animate={{ opacity: 1, x: 0 }}
           className="relative"
         >
-          <div className="absolute inset-0 bg-white/60 dark:bg-slate-800/60 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50"></div>
+          <div className="absolute inset-0 bg-white/70 dark:bg-gray-900/80 backdrop-blur-2xl rounded-3xl border border-slate-200/50 dark:border-gray-700/50 shadow-xl"></div>
           <div className="relative p-8">
             <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6 flex items-center">
               <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full mr-3"></div>
@@ -424,14 +430,12 @@ export function AnalyticsPage({ challenges }: AnalyticsPageProps) {
                 <PolarGrid stroke="rgba(148, 163, 184, 0.3)" />
                 <PolarAngleAxis 
                   dataKey="subject" 
-                  tick={{ fontSize: 11, fill: 'currentColor' }}
-                  className="fill-slate-600 dark:fill-slate-400"
+                  tick={{ fontSize: 12, fontWeight: 500, fill: 'rgb(100, 116, 139)' }}
                 />
                 <PolarRadiusAxis 
                   angle={90} 
                   domain={[0, 100]} 
-                  tick={{ fontSize: 10, fill: 'currentColor' }}
-                  className="fill-slate-600 dark:fill-slate-400"
+                  tick={{ fontSize: 11, fontWeight: 500, fill: 'rgb(100, 116, 139)' }}
                 />
                 <Radar
                   name="Performance"
@@ -443,11 +447,14 @@ export function AnalyticsPage({ challenges }: AnalyticsPageProps) {
                 />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                    backgroundColor: 'rgba(15, 23, 42, 0.98)',
                     border: 'none',
-                    borderRadius: '12px',
+                    borderRadius: '16px',
                     color: 'white',
+                    fontSize: '14px',
+                    fontWeight: '500',
                     boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                    backdropFilter: 'blur(16px)',
                   }}
                 />
               </RadarChart>
@@ -461,7 +468,7 @@ export function AnalyticsPage({ challenges }: AnalyticsPageProps) {
           animate={{ opacity: 1, x: 0 }}
           className="relative"
         >
-          <div className="absolute inset-0 bg-white/60 dark:bg-slate-800/60 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50"></div>
+          <div className="absolute inset-0 bg-white/70 dark:bg-gray-900/80 backdrop-blur-2xl rounded-3xl border border-slate-200/50 dark:border-gray-700/50 shadow-xl"></div>
           <div className="relative p-8">
             <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6 flex items-center">
               <div className="w-2 h-2 bg-gradient-to-r from-indigo-500 to-blue-600 rounded-full mr-3"></div>
@@ -472,24 +479,27 @@ export function AnalyticsPage({ challenges }: AnalyticsPageProps) {
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(148, 163, 184, 0.2)" />
                 <XAxis
                   dataKey="month"
-                  tick={{ fontSize: 12, fill: 'currentColor' }}
-                  className="fill-slate-600 dark:fill-slate-400"
+                  tick={{ fontSize: 13, fontWeight: 500 }}
+                  stroke="rgb(100, 116, 139)"
                   axisLine={false}
                   tickLine={false}
                 />
                 <YAxis
-                  tick={{ fontSize: 12, fill: 'currentColor' }}
-                  className="fill-slate-600 dark:fill-slate-400"
+                  tick={{ fontSize: 13, fontWeight: 500 }}
+                  stroke="rgb(100, 116, 139)"
                   axisLine={false}
                   tickLine={false}
                 />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                    backgroundColor: 'rgba(15, 23, 42, 0.98)',
                     border: 'none',
-                    borderRadius: '12px',
+                    borderRadius: '16px',
                     color: 'white',
+                    fontSize: '14px',
+                    fontWeight: '500',
                     boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                    backdropFilter: 'blur(16px)',
                   }}
                 />
                 <Line
@@ -520,7 +530,7 @@ export function AnalyticsPage({ challenges }: AnalyticsPageProps) {
         animate={{ opacity: 1, y: 0 }}
         className="relative"
       >
-        <div className="absolute inset-0 bg-white/60 dark:bg-slate-800/60 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50"></div>
+        <div className="absolute inset-0 bg-white/70 dark:bg-gray-900/80 backdrop-blur-2xl rounded-3xl border border-slate-200/50 dark:border-gray-700/50 shadow-xl"></div>
         <div className="relative p-8">
           <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6 flex items-center">
             <div className="w-2 h-2 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-full mr-3"></div>

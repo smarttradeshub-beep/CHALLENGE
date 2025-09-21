@@ -193,65 +193,86 @@ export function HomePage({ challenges }: HomePageProps) {
     >
       {/* Hero Header */}
       <div className="relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-3xl blur-3xl"></div>
-        <div className="relative bg-white/40 dark:bg-slate-800/40 backdrop-blur-xl rounded-3xl border border-slate-200/50 dark:border-slate-700/50 p-10">
+        <motion.div 
+          animate={{
+            scale: [1, 1.02, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-3xl blur-3xl"
+        />
+        <div className="relative bg-white/60 dark:bg-gray-900/80 backdrop-blur-2xl rounded-3xl border border-slate-200/50 dark:border-gray-700/50 p-12 shadow-2xl">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
             <div>
               <motion.h1 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-slate-900 via-blue-800 to-purple-800 dark:from-white dark:via-blue-200 dark:to-purple-200 bg-clip-text text-transparent leading-tight"
+                transition={{ duration: 0.8 }}
+                className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-slate-900 via-blue-800 to-purple-800 dark:from-white dark:via-blue-200 dark:to-purple-200 bg-clip-text text-transparent leading-tight"
               >
                 Your Challenge Journey
               </motion.h1>
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="text-slate-600 dark:text-slate-300 mt-3 text-lg leading-relaxed"
+                transition={{ delay: 0.2, duration: 0.8 }}
+                className="text-slate-600 dark:text-slate-300 mt-4 text-xl leading-relaxed font-medium"
               >
                 Transform your goals into achievements with intelligent tracking and insights
               </motion.p>
             </div>
 
-            <div className="flex items-center space-x-4">
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="flex items-center space-x-4"
+            >
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setShowStats(!showStats)}
                 className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
                   showStats 
-                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg' 
-                    : 'bg-slate-100/80 hover:bg-slate-200/80 dark:bg-slate-700/80 dark:hover:bg-slate-600/80 text-slate-700 dark:text-slate-300'
+                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-xl' 
+                    : 'bg-slate-100/80 hover:bg-slate-200/80 dark:bg-gray-700/80 dark:hover:bg-gray-600/80 text-slate-700 dark:text-slate-300 shadow-lg'
                 }`}
               >
                 <BarChart3 className="w-4 h-4" />
                 <span>{showStats ? "Hide Analytics" : "Show Analytics"}</span>
               </motion.button>
 
-              <div className="flex items-center bg-slate-100/80 dark:bg-slate-700/80 rounded-xl p-1">
-                <button
+              <div className="flex items-center bg-slate-100/80 dark:bg-gray-700/80 rounded-xl p-1.5 shadow-lg">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   onClick={() => setViewMode('grid')}
                   className={`p-2 rounded-lg transition-all duration-200 ${
                     viewMode === 'grid' 
-                      ? 'bg-white dark:bg-slate-600 shadow-sm' 
-                      : 'hover:bg-slate-200/50 dark:hover:bg-slate-600/50'
+                      ? 'bg-white dark:bg-gray-600 shadow-md' 
+                      : 'hover:bg-slate-200/50 dark:hover:bg-gray-600/50'
                   }`}
                 >
                   <Grid3X3 className="w-4 h-4 text-slate-600 dark:text-slate-400" />
-                </button>
-                <button
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   onClick={() => setViewMode('list')}
                   className={`p-2 rounded-lg transition-all duration-200 ${
                     viewMode === 'list' 
-                      ? 'bg-white dark:bg-slate-600 shadow-sm' 
-                      : 'hover:bg-slate-200/50 dark:hover:bg-slate-600/50'
+                      ? 'bg-white dark:bg-gray-600 shadow-md' 
+                      : 'hover:bg-slate-200/50 dark:hover:bg-gray-600/50'
                   }`}
                 >
                   <List className="w-4 h-4 text-slate-600 dark:text-slate-400" />
-                </button>
+                </motion.button>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -281,15 +302,21 @@ export function HomePage({ challenges }: HomePageProps) {
       {/* Challenge Results Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="flex items-center space-x-3">
-          <div className="p-2 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg">
+          <motion.div 
+            whileHover={{ scale: 1.1, rotate: 5 }}
+            className="p-3 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl shadow-lg"
+          >
             <Zap className="w-5 h-5 text-white" />
-          </div>
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
+          </motion.div>
+          <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100">
             Active Challenges
           </h2>
-          <span className="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded-full text-sm font-semibold text-slate-600 dark:text-slate-400">
+          <motion.span 
+            whileHover={{ scale: 1.05 }}
+            className="px-4 py-2 bg-slate-100 dark:bg-gray-700 rounded-full text-sm font-bold text-slate-600 dark:text-slate-300 shadow-sm"
+          >
             {filteredChallenges.length}
-          </span>
+          </motion.span>
         </div>
         
         {hasActiveFilters && (
@@ -299,7 +326,7 @@ export function HomePage({ challenges }: HomePageProps) {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={clearAllFilters}
-            className="flex items-center space-x-2 px-4 py-2 bg-red-100 hover:bg-red-200 dark:bg-red-900/20 dark:hover:bg-red-900/30 text-red-700 dark:text-red-400 rounded-xl transition-all duration-200 font-medium"
+            className="flex items-center space-x-2 px-5 py-2.5 bg-red-100 hover:bg-red-200 dark:bg-red-900/20 dark:hover:bg-red-900/30 text-red-700 dark:text-red-400 rounded-xl transition-all duration-200 font-semibold shadow-lg"
           >
             <X className="w-4 h-4" />
             <span>Clear Filters</span>
@@ -332,16 +359,34 @@ export function HomePage({ challenges }: HomePageProps) {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
           className="text-center py-20"
         >
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-full blur-3xl"></div>
-            <div className="relative text-8xl mb-6">🎯</div>
+          <div className="relative mb-8">
+            <motion.div 
+              animate={{
+                scale: [1, 1.1, 1],
+                opacity: [0.3, 0.6, 0.3],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-full blur-3xl"
+            />
+            <motion.div 
+              animate={{ rotate: [0, 5, -5, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="relative text-9xl"
+            >
+              🎯
+            </motion.div>
           </div>
-          <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3">
+          <h3 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4">
             No challenges found
           </h3>
-          <p className="text-slate-500 dark:text-slate-400 mb-8 max-w-md mx-auto leading-relaxed">
+          <p className="text-slate-500 dark:text-slate-400 mb-8 max-w-lg mx-auto leading-relaxed text-lg">
             {challenges.length === 0
               ? "Ready to start your journey? Add your first challenge and begin tracking your progress!"
               : "Try adjusting your filters to discover more challenges that match your criteria."}
